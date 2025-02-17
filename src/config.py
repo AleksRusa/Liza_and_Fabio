@@ -1,0 +1,1 @@
+votes = {"option1": 0, "option2": 0}
