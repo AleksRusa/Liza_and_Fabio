@@ -2,7 +2,9 @@ from fastapi import APIRouter, HTTPException, Request
 from fastapi.templating import Jinja2Templates
 
 from models import Vote
+
 from config import votes
+
 
 router = APIRouter()
 

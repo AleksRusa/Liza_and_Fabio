@@ -3,118 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Голосования</title>
-    <!-- Загрузка стилей Bootstrap из интернета -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEJv+pq6T3Q7nwsxP3k6Q5aG9gK5t7Wz6Y9aY5h2pgHf7rDp1EYzK6uD63lZ9" crossorigin="anonymous">
+    <title>Голосование</title>
     <style>
-        .voting-section {
-            margin-bottom: 30px;
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+            margin: 0;
         }
-        .voting-section h5 {
-            margin-bottom: 15px;
+        .vote-container {
+            text-align: center;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .voting-button {
-            width: 100%;
+        .vote-container button {
+            padding: 10px 20px;
+            margin: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .vote-container button:hover {
+            background-color: #dcdcdc;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="text-center my-5">Голосования</h1>
-
-        <!-- Секция с голосованиями -->
-        <div class="row">
-            <!-- Голосование 1 -->
-            <div class="col-md-4 voting-section">
-                <h5>Какой ваш любимый цвет?</h5>
-                <button class="btn btn-primary voting-button">Красный</button>
-                <button class="btn btn-secondary voting-button">Синий</button>
-                <button class="btn btn-success voting-button">Зеленый</button>
-            </div>
-
-            <!-- Голосование 2 -->
-            <div class="col-md-4 voting-section">
-                <h5>Какую еду вы предпочитаете?</h5>
-                <button class="btn btn-primary voting-button">Пицца</button>
-                <button class="btn btn-secondary voting-button">Суши</button>
-                <button class="btn btn-success voting-button">Бургер</button>
-            </div>
-
-            <!-- Голосование 3 -->
-            <div class="col-md-4 voting-section">
-                <h5>Какой ваш любимый сезон?</h5>
-                <button class="btn btn-primary voting-button">Лето</button>
-                <button class="btn btn-secondary voting-button">Зима</button>
-                <button class="btn btn-success voting-button">Осень</button>
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- Голосование 4 -->
-            <div class="col-md-4 voting-section">
-                <h5>Какой жанр музыки вам нравится?</h5>
-                <button class="btn btn-primary voting-button">Рок</button>
-                <button class="btn btn-secondary voting-button">Поп</button>
-                <button class="btn btn-success voting-button">Джаз</button>
-            </div>
-
-            <!-- Голосование 5 -->
-            <div class="col-md-4 voting-section">
-                <h5>Ваш любимый вид спорта?</h5>
-                <button class="btn btn-primary voting-button">Футбол</button>
-                <button class="btn btn-secondary voting-button">Теннис</button>
-                <button class="btn btn-success voting-button">Баскетбол</button>
-            </div>
-
-            <!-- Голосование 6 -->
-            <div class="col-md-4 voting-section">
-                <h5>Ваш любимый тип отдыха?</h5>
-                <button class="btn btn-primary voting-button">Пляж</button>
-                <button class="btn btn-secondary voting-button">Горы</button>
-                <button class="btn btn-success voting-button">Городские прогулки</button>
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- Голосование 7 -->
-            <div class="col-md-4 voting-section">
-                <h5>Какой тип фильмов вы предпочитаете?</h5>
-                <button class="btn btn-primary voting-button">Драма</button>
-                <button class="btn btn-secondary voting-button">Комедия</button>
-                <button class="btn btn-success voting-button">Экшн</button>
-            </div>
-
-            <!-- Голосование 8 -->
-            <div class="col-md-4 voting-section">
-                <h5>Что вы предпочитаете пить?</h5>
-                <button class="btn btn-primary voting-button">Кофе</button>
-                <button class="btn btn-secondary voting-button">Чай</button>
-                <button class="btn btn-success voting-button">Сок</button>
-            </div>
-
-            <!-- Голосование 9 -->
-            <div class="col-md-4 voting-section">
-                <h5>Какой ваш любимый способ путешествия?</h5>
-                <button class="btn btn-primary voting-button">Самолет</button>
-                <button class="btn btn-secondary voting-button">Поезд</button>
-                <button class="btn btn-success voting-button">Автомобиль</button>
-            </div>
-        </div>
-
-        <div class="row">
-            <!-- Голосование 10 -->
-            <div class="col-md-12 voting-section">
-                <h5>Какую погоду вы предпочитаете?</h5>
-                <button class="btn btn-primary voting-button">Жаркое лето</button>
-                <button class="btn btn-secondary voting-button">Прохладная осень</button>
-                <button class="btn btn-success voting-button">Холодная зима</button>
-            </div>
-        </div>
-
+    <div class="vote-container">
+        <h1>За что голосуете?</h1>
+        <button id="option1">Вариант 1</button>
+        <button id="option2">Вариант 2</button>
+        <p id="result"></p>
     </div>
+    <script>
+        async function vote(option) {
+            const response = await fetch("http://127.0.0.1:8000/vote", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ option })
+            });
 
-    <!-- Загрузка скриптов Bootstrap из интернета -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pzjw8f+ua7Kw1TIq0gbS8d41h7uvmdz1iA4S5PptANcbIzgP10+OsURwzPHg03vN" crossorigin="anonymous"></script>
+            if (response.ok) {
+                const result = await response.json();
+                document.getElementById("result").textContent = 
+                    `Результаты: Вариант 1 - ${result.option1}, Вариант 2 - ${result.option2}`;
+            } else {
+                alert("Ошибка голосования!");
+            }
+        }
+
+        document.getElementById("option1").addEventListener("click", () => vote("option1"));
+        document.getElementById("option2").addEventListener("click", () => vote("option2"));
+    </script>
 </body>
 </html>
-
